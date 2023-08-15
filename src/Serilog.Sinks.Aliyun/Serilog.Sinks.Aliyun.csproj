@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Version>0.1.0</Version>
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
+        <RootNamespace/>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Description>Serilog sink that writes events to the Seq structured log server</Description>
+        <Authors>Serilog Contributors</Authors>
+        <Copyright>Copyright © Serilog Contributors</Copyright>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <PackageTags>serilog;aliyun</PackageTags>
+        <PackageProjectUrl>https://github.com/RayMMond/serilog-sinks-aliyun</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/RayMMond/serilog-sinks-aliyun</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)"/>
+        <PackageReference Include="Aliyun.Api.LogService" Version="$(AliyunApiLogServiceVersion)"/>
+        <PackageReference Include="Serilog" Version="$(SerilogVersion)"/>
+        <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="$(SerilogSinksPeriodicBatchingVersion)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="" Visible="False"/>
+    </ItemGroup>
+</Project>

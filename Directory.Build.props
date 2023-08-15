@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <SerilogVersion>3.0.1</SerilogVersion>
+        <SerilogSinksPeriodicBatchingVersion>3.1.0</SerilogSinksPeriodicBatchingVersion>
+        <AliyunApiLogServiceVersion>1.1.0</AliyunApiLogServiceVersion>
+        <MicrosoftNetTestSdkVersion>17.7.0</MicrosoftNetTestSdkVersion>
+        <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
+        <XunitRunnerVisualStudioVersion>2.5.0</XunitRunnerVisualStudioVersion>
+        <XunitVersion>2.5.0</XunitVersion>
+    </PropertyGroup>
+</Project>
