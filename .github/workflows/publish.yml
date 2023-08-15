@@ -39,9 +39,6 @@ jobs:
       - name: dotnet pack
         run: dotnet pack -c Release --no-build --property PackageOutputPath=${{ github.workspace }}/nugetPackages/
 
-      - name: dotnet nuget push to NuGet
-        run: dotnet nuget push ${{ github.workspace }}/nugetPackages/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
-
       - name: dotnet nuget push to GitHub
         uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
         with:
@@ -49,6 +46,9 @@ jobs:
           repo-owner:  'RayMMond'
           gh-user:  'RayMMond'
           token:  ${{ secrets.GITHUB_TOKEN }}
+
+      - name: dotnet nuget push to NuGet
+        run: dotnet nuget push ${{ github.workspace }}/nugetPackages/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: determine if the tag exists
         uses: mukunku/tag-exists-action@v1.0.0
