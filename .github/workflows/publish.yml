@@ -17,7 +17,7 @@ jobs:
         id: readProject
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./common.props
+          path: ./src/Serilog.Sinks.Aliyun/Serilog.Sinks.Aliyun.csproj
 
       - name: get version
         id: getVersion
