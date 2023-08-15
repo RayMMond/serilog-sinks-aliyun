@@ -11,6 +11,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
+        <PackageID>Serilog.Sinks.Aliyun-SLS</PackageID>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>

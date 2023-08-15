@@ -1,13 +1,13 @@
-# Serilog.Sinks.Aliyun
+# Serilog.Sinks.Aliyun [![release](https://github.com/RayMMond/serilog-sinks-aliyun/actions/workflows/publish.yml/badge.svg?branch=main&event=release)](https://github.com/RayMMond/serilog-sinks-aliyun/actions/workflows/publish.yml) [![NuGet](https://img.shields.io/nuget/v/Serilog.Sinks.Aliyun-SLS.svg)](https://nuget.org/packages/serilog.sinks.aliyun-sls)
 
 A Serilog sink that writes events to the [Aliyun SLS](https://help.aliyun.com/zh/sls/).
 
 ### Getting started
 
-Install _Serilog.Sinks.Aliyun_ into your .NET project:
+Install _Serilog.Sinks.Aliyun-SLS_ into your .NET project:
 
 ```powershell
-> dotnet add package Serilog.Sinks.Aliyun
+> dotnet add package Serilog.Sinks.Aliyun-SLS
 ```
 
 Point the logger to Aliyun:
