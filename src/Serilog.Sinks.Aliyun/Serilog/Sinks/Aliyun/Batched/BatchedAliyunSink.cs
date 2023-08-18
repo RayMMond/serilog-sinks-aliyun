@@ -52,18 +52,25 @@ public sealed class BatchedAliyunSink : IBatchedLogEventSink
                 Time = logEvent.Timestamp
             };
 
-            log.Contents.Add("Level", logEvent.Level.ToString());
-            log.Contents.Add("Message", logEvent.RenderMessage());
-
+            log.Contents.Add("@Level", logEvent.Level.ToString());
+            log.Contents.Add("@Message", logEvent.RenderMessage());
+            log.Contents.Add("@MessageTemplate", logEvent.MessageTemplate.Text);
 
             if (logEvent.Exception != null)
             {
-                log.Contents.Add("Exception", logEvent.Exception.ToString());
+                log.Contents.Add("@Exception", logEvent.Exception.ToString());
             }
 
             foreach (var prop in logEvent.Properties)
             {
-                log.Contents.Add(prop.Key, prop.Value.ToString().Trim('"'));
+                if (!log.Contents.ContainsKey(prop.Key))
+                {
+                    log.Contents.Add(prop.Key, prop.Value.ToString().Trim('"'));
+                }
+                else
+                {
+                    SelfLog.WriteLine("Duplicate key: " + prop.Key);
+                }
             }
 
             logs.Add(log);
