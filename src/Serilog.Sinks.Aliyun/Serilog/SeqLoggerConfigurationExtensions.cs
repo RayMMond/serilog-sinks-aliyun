@@ -3,7 +3,6 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.Aliyun;
 using Serilog.Sinks.Aliyun.Batched;
-using Serilog.Sinks.PeriodicBatching;
 
 namespace Serilog
 {
@@ -70,18 +69,16 @@ namespace Serilog
                 source,
                 requestTimeout);
 
-            var options = new PeriodicBatchingSinkOptions
+            var options = new BatchingOptions
             {
                 BatchSizeLimit = batchPostingLimit,
-                Period = defaultedPeriod,
+                BufferingTimeLimit = defaultedPeriod,
                 QueueLimit = queueSizeLimit
             };
 
-            var sink = new PeriodicBatchingSink(batchedSink, options);
-
             return loggerSinkConfiguration.Conditional(
                 controlledSwitch.IsIncluded,
-                wt => wt.Sink(sink, restrictedToMinimumLevel, levelSwitch: null));
+                wt => wt.Sink(batchedSink, options, restrictedToMinimumLevel, levelSwitch: null));
         }
     }
 }

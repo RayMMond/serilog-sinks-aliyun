@@ -1,14 +1,14 @@
 ﻿using Aliyun.Api.LogService;
 using Aliyun.Api.LogService.Domain.Log;
 using Aliyun.Api.LogService.Infrastructure.Protocol.Http;
+using Serilog.Core;
 using Serilog.Debugging;
 using Serilog.Events;
-using Serilog.Sinks.PeriodicBatching;
 
 namespace Serilog.Sinks.Aliyun.Batched;
 
 /// <summary>
-/// The default Aliyun sink, for use in combination with <see cref="PeriodicBatchingSink"/>.
+/// The default Aliyun sink
 /// </summary>
 public sealed class BatchedAliyunSink : IBatchedLogEventSink
 {
@@ -37,15 +37,10 @@ public sealed class BatchedAliyunSink : IBatchedLogEventSink
     }
 
 
-    public Task OnEmptyBatchAsync()
-    {
-        return Task.CompletedTask;
-    }
-
-    public async Task EmitBatchAsync(IEnumerable<LogEvent> events)
+    public async Task EmitBatchAsync(IReadOnlyCollection<LogEvent> batch)
     {
         var logs = new List<LogInfo>();
-        foreach (var logEvent in events)
+        foreach (var logEvent in batch)
         {
             var log = new LogInfo
             {
@@ -87,5 +82,10 @@ public sealed class BatchedAliyunSink : IBatchedLogEventSink
         {
             SelfLog.WriteLine(response.Error.ErrorMessage);
         }
+    }
+
+    public Task OnEmptyBatchAsync()
+    {
+        return Task.CompletedTask;
     }
 }
