@@ -11,7 +11,7 @@ jobs:
       - uses: NuGet/setup-nuget@v1
       - uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '9.0.x'
 
       - name: read project
         id: readProject
