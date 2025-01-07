@@ -13,6 +13,7 @@ namespace Serilog.Sinks.Aliyun.Batched;
 public sealed class BatchedAliyunSink : IBatchedLogEventSink
 {
     private readonly string _logStore;
+    private readonly bool _logMessageTemplate;
     private readonly string _topic;
     private readonly HttpLogServiceClient _client;
     private readonly string _source;
@@ -24,9 +25,11 @@ public sealed class BatchedAliyunSink : IBatchedLogEventSink
         string logStore,
         string? topic = null,
         string? source = null,
+        bool logMessageTemplate = true,
         int requestTimeout = 1000)
     {
         _logStore = logStore;
+        _logMessageTemplate = logMessageTemplate;
         _topic = topic ?? string.Empty;
         _source = source ?? string.Empty;
         _client = LogServiceClientBuilders.HttpBuilder
@@ -49,7 +52,10 @@ public sealed class BatchedAliyunSink : IBatchedLogEventSink
 
             log.Contents.Add("@Level", logEvent.Level.ToString());
             log.Contents.Add("@Message", logEvent.RenderMessage());
-            log.Contents.Add("@MessageTemplate", logEvent.MessageTemplate.Text);
+            if (_logMessageTemplate)
+            {
+                log.Contents.Add("@MessageTemplate", logEvent.MessageTemplate.Text);
+            }
 
             if (logEvent.Exception != null)
             {

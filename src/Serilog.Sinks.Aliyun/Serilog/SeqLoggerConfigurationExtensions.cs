@@ -27,6 +27,7 @@ namespace Serilog
         /// <param name="source">SLS Source</param>
         /// <param name="accessKeyId">Aliyun AccessKeyId</param>
         /// <param name="accessKeySecret">Aliyun AccessKeySecret</param>
+        /// <param name="logMessageTemplate"></param>
         /// <param name="requestTimeout">Timeout in milliseconds, when sending request to SLS</param>
         /// <param name="restrictedToMinimumLevel">The minimum log event level required 
         /// in order to write an event to the sink.</param>
@@ -46,6 +47,7 @@ namespace Serilog
             string logStore,
             string? topic = null,
             string? source = null,
+            bool logMessageTemplate = true,
             int requestTimeout = DefaultRequestTimeout,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             int batchPostingLimit = DefaultBatchPostingLimit,
@@ -67,6 +69,7 @@ namespace Serilog
                 logStore,
                 topic,
                 source,
+                logMessageTemplate,
                 requestTimeout);
 
             var options = new BatchingOptions
