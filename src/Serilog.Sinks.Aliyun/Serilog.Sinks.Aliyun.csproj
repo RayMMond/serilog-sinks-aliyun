@@ -4,7 +4,7 @@
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>1.1.0</Version>
+        <Version>1.2.0</Version>
         <NoWarn>$(NoWarn);CS1591</NoWarn>
         <RootNamespace/>
         <LangVersion>latest</LangVersion>
@@ -29,7 +29,7 @@
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)"/>
-        <PackageReference Include="Aliyun.Api.LogService" Version="$(AliyunApiLogServiceVersion)"/>
+        <PackageReference Include="Aliyun.SLS.SDK" Version="$(AliyunApiLogServiceVersion)"/>
         <PackageReference Include="Serilog" Version="4.2.0" />
         <PackageReference Include="System.Net.Http" Version="4.3.4" />
         <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
